@@ -48,7 +48,7 @@ nav a:hover{color:var(--ink)}
 
 /* collection */
 .collection{padding:clamp(2.5rem,6vw,4.5rem) 0}
-.collection h2,.packages h2,.promise h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(1.9rem,4.5vw,2.7rem);text-align:center}
+.collection h2,.packages h2,.promise h2,.why h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(1.9rem,4.5vw,2.7rem);text-align:center}
 .sub{text-align:center;font-style:italic;color:var(--ink-2);max-width:560px;margin:.4rem auto 0}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.8rem}
 @media(max-width:900px){.cards{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}}
@@ -98,6 +98,42 @@ nav a:hover{color:var(--ink)}
 .promise .f .fi{font-size:1.4rem;color:var(--gold-bright)}
 .promise .f .ft{margin-top:.4rem;font-size:1.02rem;letter-spacing:.06em}
 .promise .f .fd{font-size:.9rem;color:#B7A888;font-style:italic;margin-top:.2rem}
+
+/* why — animated benefits + live panel */
+.why{padding:clamp(2.5rem,6vw,4.5rem) 0}
+.why .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;margin-top:2.8rem;align-items:start}
+@media(max-width:900px){.why .grid{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto}}
+.bene{display:flex;gap:1.1rem;padding:1.15rem 1.2rem;border:1px solid var(--line-soft);margin-bottom:1rem;
+  background:linear-gradient(175deg,rgba(255,252,242,.55),rgba(230,220,196,.3));
+  opacity:0;transform:translateX(-26px);transition:opacity .8s ease,transform .8s ease,border-color .3s}
+.bene:nth-child(2){transition-delay:.12s}.bene:nth-child(3){transition-delay:.24s}.bene:nth-child(4){transition-delay:.36s}.bene:nth-child(5){transition-delay:.48s}
+.why.in .bene{opacity:1;transform:none}
+.bene:hover{border-color:var(--gold)}
+.bene .bi{flex:0 0 auto;width:42px;height:42px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.05rem}
+.bene .bt2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.15rem}
+.bene .bd{color:var(--ink-2);font-size:.97rem;margin-top:.15rem}
+/* live panel */
+.pulse{background:var(--plate);color:var(--plate-ink);padding:1.8rem 1.7rem;border:1px solid #4a3f2e;box-shadow:0 24px 50px -30px rgba(60,48,30,.6);position:sticky;top:5.5rem}
+.pulse .ph{display:flex;align-items:center;gap:.6rem;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-bright)}
+.pulse .dot{width:8px;height:8px;border-radius:50%;background:#7fc98a;animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(127,201,138,.5)}50%{opacity:.5;box-shadow:0 0 0 6px rgba(127,201,138,0)}}
+.pulse .count{font-family:'Playfair Display',Georgia,serif;font-size:2.6rem;font-weight:600;margin:.9rem 0 .1rem;color:#F4EBD6}
+.pulse .count small{font-size:1rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:#B7A888}
+.pulse .bar{height:5px;background:#3a3226;border-radius:3px;margin:.7rem 0 1.3rem;overflow:hidden}
+.pulse .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-bright));border-radius:3px;transition:width 2.2s cubic-bezier(.22,1,.36,1)}
+.feed{border-top:1px solid #3a3226;padding-top:.9rem;min-height:9.2em}
+.feed .ln{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;padding:.32rem 0;color:#D9CDB2;
+  opacity:0;transform:translateY(8px);animation:lnIn .6s ease forwards}
+@keyframes lnIn{to{opacity:1;transform:none}}
+.feed .ln .st{font-style:italic;font-size:.85rem}
+.feed .ln .st.yes{color:#8fd39a}.feed .ln .st.no{color:#d39a8f}.feed .ln .st.note{color:var(--gold-bright)}
+.pulse .ptask{border-top:1px solid #3a3226;margin-top:.9rem;padding-top:.9rem}
+.pulse .ptask .ph2{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#8d7f66;margin-bottom:.5rem}
+.ptask .tk{display:flex;align-items:center;gap:.6rem;font-size:.92rem;color:#B7A888;padding:.22rem 0;transition:color .5s}
+.ptask .tk .box{width:14px;height:14px;border:1px solid var(--gold);flex:0 0 auto;position:relative;transition:background .4s}
+.ptask .tk.done{color:#EDE2C6}
+.ptask .tk.done .box{background:var(--gold)}
+.ptask .tk.done .box::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#241c10}
 
 /* contact */
 .contact{text-align:center;padding:clamp(3rem,7vw,5rem) 1.4rem}
@@ -258,6 +294,35 @@ footer svg{width:26px;height:26px;color:var(--gold)}
   </div>
 </section>
 
+<section class="why rv" id="why">
+  <div class="wrap">
+    <h2>Why couples never look back</h2>
+    <p class="sub">An Atelier invitation is not a page — it is the wedding, already organized, already felt, weeks before the day.</p>
+    <div class="grid">
+      <div class="benes">
+        <div class="bene"><div class="bi">❦</div><div><div class="bt2">Designed like a film, not a form</div><div class="bd">Sealed openings, motion, music and type that moves with feeling — guests don't read your invitation, they experience it.</div></div></div>
+        <div class="bene"><div class="bi">♥</div><div><div class="bt2">It speaks for you, personally</div><div class="bd">Every guest is greeted by name and guided through everything — the story, the dress code, the schedule, the venue — shaped around the feeling you want them to carry. No more answering the same question forty times.</div></div></div>
+        <div class="bene"><div class="bi">✓</div><div><div class="bt2">Know exactly who is coming</div><div class="bd">Every reply is tracked the moment it arrives — who confirmed, who declined, seats, plus-ones and notes — instead of chasing texts and spreadsheets.</div></div></div>
+        <div class="bene"><div class="bi">✦</div><div><div class="bt2">The whole wedding, organized</div><div class="bd">For the planner: one link that tracks the moving parts — catering and supplies, vendors, locations, timelines and the task list — synced with what guests see and request.</div></div></div>
+        <div class="bene"><div class="bi">↻</div><div><div class="bt2">A live picture of the day</div><div class="bd">The site stays alive after it's sent: replies stream in, numbers update, plans move — you watch your wedding come together in real time.</div></div></div>
+      </div>
+      <div class="pulse" id="pulse">
+        <div class="ph"><span class="dot"></span> Live RSVP Feed</div>
+        <div class="count"><span id="rsvpCount">0</span><small> of 150 guests confirmed</small></div>
+        <div class="bar"><i id="rsvpBar"></i></div>
+        <div class="feed" id="feed"></div>
+        <div class="ptask">
+          <div class="ph2">Planner · This Week</div>
+          <div class="tk" data-tk><span class="box"></span>Finalize catering headcount from RSVPs</div>
+          <div class="tk" data-tk><span class="box"></span>Confirm floral &amp; supply delivery windows</div>
+          <div class="tk" data-tk><span class="box"></span>Lock venue layout — lantern garden north</div>
+          <div class="tk" data-tk><span class="box"></span>Send shuttle schedule to out-of-town guests</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="packages rv" id="packages">
   <div class="wrap">
     <h2>Packages</h2>
@@ -285,8 +350,9 @@ footer svg{width:26px;height:26px;color:var(--gold)}
         <p class="tp">A planner link that syncs with the wedding site — requests, invitations, and RSVPs in one place, for every couple you manage.</p>
         <ul>
           <li>Planner dashboard linked to each wedding site</li>
+          <li>Live RSVP feed — who's coming, seats &amp; notes, as it happens</li>
+          <li>Task lists for catering, supplies, vendors &amp; locations</li>
           <li>Guest requests &amp; invitation status at a glance</li>
-          <li>RSVP tracking synced from the invitation</li>
           <li>Your name credited on every invitation</li>
           <li>White-label ready for your studio</li>
         </ul>
@@ -320,9 +386,42 @@ footer svg{width:26px;height:26px;color:var(--gold)}
   function lift(){ if(intro){intro.classList.add('away'); setTimeout(function(){if(intro.parentNode)intro.parentNode.removeChild(intro);},1200);} }
   window.addEventListener('load',function(){ var wait=Math.max(0,2400-(Date.now()-t0)); setTimeout(lift,wait); });
   setTimeout(lift,4200);
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.id==='why')startPulse();}});},{threshold:.1});
   document.querySelectorAll('.rv').forEach(function(n){io.observe(n);});
-  setTimeout(function(){document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in');});},3400);
+  setTimeout(function(){document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in');});if(!pulseStarted)startPulse();},3400);
+
+  var pulseStarted=false;
+  function startPulse(){
+    if(pulseStarted)return; pulseStarted=true;
+    var el=document.getElementById('rsvpCount'); if(!el)return;
+    var target=118,t0=null;
+    function tick(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/2200); var v=Math.round(target*(1-Math.pow(1-p,3)));
+      el.textContent=v; if(p<1)requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+    document.getElementById('rsvpBar').style.width=(target/150*100)+'%';
+    var lines=[
+      ['Maya R.','Attending · 2 seats','yes'],
+      ['The Okafor Family','Attending · 4 seats','yes'],
+      ['Daniel K.','Vegetarian · 1 seat','note'],
+      ['Priya S.','Attending · 2 seats','yes'],
+      ['Jonas &amp; Elin','Regrets · traveling','no'],
+      ['The Haddads','Attending · 3 seats','yes'],
+      ['Sofia M.','Song request added','note'],
+      ['Omar T.','Attending · 1 seat','yes']
+    ];
+    var feed=document.getElementById('feed'),i=0;
+    function push(){
+      var l=lines[i%lines.length]; i++;
+      var d=document.createElement('div'); d.className='ln';
+      d.innerHTML='<span>'+l[0]+'</span><span class="st '+l[2]+'">'+l[1]+'</span>';
+      feed.prepend(d);
+      while(feed.children.length>5)feed.removeChild(feed.lastChild);
+    }
+    push();push();push();
+    setInterval(push,2600);
+    var tks=document.querySelectorAll('[data-tk]');
+    tks.forEach(function(t,n){ setTimeout(function(){t.classList.add('done');}, 1400+n*1700); });
+  }
 })();
 </script>
 </body>
