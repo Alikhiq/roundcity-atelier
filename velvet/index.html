@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vivian &amp; Theodore — The Velvet — December 4, 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --velvet:#0E1A16; --velvet2:#12241D; --ink:#EDE3C8; --ink-2:#A99F7E;
+  --gold:#C9A959; --gold-2:#8A713B; --line:#2C3E33;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--velvet);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden;height:100vh}
+.cz{font-family:'Cinzel',Georgia,serif}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 .2 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .6 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>")}
+
+/* deco fan divider */
+.fan{display:flex;justify-content:center;margin:1.4rem 0;color:var(--gold)}
+.fan svg{width:220px;height:34px}
+
+/* ---------- speakeasy gate ---------- */
+#gate{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:1.5rem;
+  background:radial-gradient(110% 90% at 50% 45%, rgba(14,26,22,.6), rgba(14,26,22,.95));transition:opacity 1.2s ease}
+#gate.gone{opacity:0;pointer-events:none}
+.door{width:min(400px,94vw);text-align:center;border:1px solid var(--gold-2);padding:2.6rem 2.2rem 2.2rem;position:relative;background:linear-gradient(170deg,#14261F,#0E1A16)}
+.door::before{content:'';position:absolute;inset:8px;border:1px solid rgba(201,169,89,.35);pointer-events:none}
+.door .knock{font-family:'Cinzel',serif;letter-spacing:.4em;font-size:.72rem;color:var(--gold);text-transform:uppercase}
+.door .whisper{margin:.8rem 0 1.6rem;font-style:italic;color:var(--ink-2)}
+.door input{width:100%;background:rgba(237,227,200,.05);border:1px solid var(--gold-2);color:var(--ink);text-align:center;
+  font-family:'Cinzel',serif;font-size:1.5rem;letter-spacing:.6em;padding:.9rem 0 .9rem .6em;outline:none}
+.door input:focus{border-color:var(--gold)}
+.door .hint{margin-top:.8rem;font-size:.9rem;font-style:italic;color:var(--ink-2);min-height:1.3em}
+.door .hint.err{color:#D98A9A;animation:sh .35s}
+@keyframes sh{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.door button{margin-top:1.2rem;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:.3em;font-size:.78rem;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold-2);padding:.8rem 2rem;background:none;transition:.25s}
+.door button:hover{background:var(--gold);color:#14100a}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(4rem,9vw,6.5rem) 1.4rem 0;text-align:center}
+.hero .est{font-family:'Cinzel',serif;letter-spacing:.44em;font-size:.72rem;color:var(--gold);text-transform:uppercase}
+.hero h1{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(2.4rem,7.4vw,4.8rem);line-height:1.14;margin:1rem 0 .3rem}
+.hero h1 .amp{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-weight:400}
+.hero .greet{font-style:italic;color:var(--gold);font-size:clamp(1rem,2.4vw,1.2rem);min-height:1.5em}
+.hero .invite{margin-top:.8rem;font-style:italic;color:var(--ink-2)}
+.hero .date{font-family:'Cinzel',serif;letter-spacing:.28em;font-size:clamp(.75rem,1.9vw,.95rem);margin-top:1.1rem}
+
+.heroimg{max-width:960px;margin:clamp(2rem,5vw,3.4rem) auto 0;padding:0 1.4rem}
+.heroimg .frame{border:1px solid var(--gold-2);padding:10px;background:linear-gradient(170deg,#14261F,#0E1A16)}
+.heroimg .frame .inner{border:1px solid rgba(201,169,89,.4)}
+.heroimg img{width:100%;display:block;filter:saturate(.95)}
+
+/* ---------- sections ---------- */
+.sec{max-width:860px;margin:0 auto;padding:clamp(3.4rem,8vw,5.5rem) 1.4rem;text-align:center}
+.sec .k{font-family:'Cinzel',serif;letter-spacing:.4em;font-size:.72rem;color:var(--gold);text-transform:uppercase}
+.sec h2{font-family:'Cinzel',serif;font-weight:500;font-size:clamp(1.8rem,4.6vw,2.7rem);margin:.9rem 0 1.1rem}
+.sec p.body{max-width:600px;margin:0 auto 1rem;font-size:clamp(1rem,2.4vw,1.18rem)}
+.sec p.body em{color:var(--gold)}
+.quiet{color:var(--ink-2);font-style:italic}
+
+/* couple columns */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:760px;margin:2rem auto 0;border:1px solid var(--gold-2)}
+@media(max-width:640px){.duo{grid-template-columns:1fr}}
+.duo .col{padding:2rem 1.6rem}
+.duo .col:first-child{border-right:1px solid var(--gold-2)}
+@media(max-width:640px){.duo .col:first-child{border-right:none;border-bottom:1px solid var(--gold-2)}}
+.duo .nm{font-family:'Cinzel',serif;font-size:1.3rem;letter-spacing:.12em}
+.duo .rl{font-style:italic;color:var(--gold);margin:.2rem 0 .7rem;font-size:.95rem}
+.duo .tx{color:var(--ink-2);font-size:.98rem}
+
+/* countdown */
+.count{display:flex;justify-content:center;gap:clamp(1.2rem,5vw,2.8rem);margin-top:1.8rem}
+.count .cell .num{font-family:'Cinzel',serif;font-size:clamp(1.9rem,5.6vw,3rem);color:var(--gold)}
+.count .cell .cap{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
+
+/* programme */
+.prog{max-width:540px;margin:2rem auto 0;text-align:left}
+.prog .row{display:flex;align-items:baseline;gap:1rem;padding:.8rem 0;border-bottom:1px dashed var(--line)}
+.prog .t{font-family:'Cinzel',serif;color:var(--gold);min-width:92px;font-size:.95rem}
+.prog .w{font-size:1.06rem}
+
+/* telegram rsvp */
+.telegram{max-width:600px;margin:2.2rem auto 0;background:#F1E8CE;color:#2A2415;padding:1.8rem 1.8rem 1.6rem;text-align:left;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.8);position:relative}
+.telegram::before{content:'TELEGRAM';position:absolute;top:-11px;left:24px;background:#F1E8CE;padding:0 .7rem;
+  font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:#8A713B}
+.telegram .tline{border-bottom:1px dashed #B9A96F;padding:.35rem 0;font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.08em}
+.telegram .tline b{color:#8A713B}
+.telegram .tb{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem}
+.tbtn{cursor:pointer;flex:1;min-width:180px;font-family:'Cinzel',serif;letter-spacing:.1em;font-size:.85rem;padding:.8rem 1rem;
+  border:1px solid #8A713B;background:none;color:#2A2415;transition:.2s;text-align:center}
+.tbtn:hover,.tbtn.picked{background:#8A713B;color:#F1E8CE}
+.telegram .tnote{margin-top:.9rem;font-style:italic;font-size:.9rem;color:#6B5E3E;text-align:center}
+
+/* venue + footer */
+.venue{margin-top:2rem;border-top:1px dashed var(--line);padding-top:1.6rem}
+.venue .vn{font-family:'Cinzel',serif;font-size:1.3rem;letter-spacing:.1em}
+.map-link{display:inline-block;margin-top:.8rem;font-family:'Cinzel',serif;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-2);padding-bottom:.15rem}
+footer{border-top:1px solid var(--line);padding:3rem 1.4rem 3.4rem;text-align:center}
+footer .mono{font-family:'Cinzel',serif;letter-spacing:.22em;font-size:1.15rem}
+footer .mono .h{color:#D98A9A}
+footer .lines{margin-top:.6rem;color:var(--ink-2);font-style:italic}
+footer .rc{margin-top:1.8rem;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
+footer .rc a{color:var(--gold);text-decoration:none}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="fanDeco" fill="none" stroke="currentColor" stroke-width="1">
+  <path d="M110,32 L110,4 M110,32 L82,8 M110,32 L138,8 M110,32 L62,20 M110,32 L158,20"/>
+  <path d="M40,32 A70,28 0 0 1 180,32" />
+  <line x1="0" y1="32" x2="40" y2="32"/><line x1="180" y1="32" x2="220" y2="32"/>
+</g></defs></svg>
+
+<!-- speakeasy -->
+<div id="gate">
+  <form class="door" id="pinForm" autocomplete="off">
+    <div class="knock">The Velvet · Members &amp; Guests</div>
+    <div class="whisper">— knock twice, then whisper the four-digit password —</div>
+    <input id="pinInput" inputmode="numeric" pattern="[0-9]*" maxlength="4" aria-label="4 digit password">
+    <div class="hint" id="pinHint">the password is on your invitation</div>
+    <button type="submit">Enter the club</button>
+  </form>
+</div>
+
+<main>
+
+  <header class="hero">
+    <div class="est">Round City Atelier · Est. MMXXVII</div>
+    <h1>Vivian <span class="amp">&amp;</span> Theodore</h1>
+    <div class="greet" id="guestGreet"></div>
+    <p class="invite">request the pleasure of your company at an evening of deco, candlelight &amp; champagne</p>
+    <div class="date">SATURDAY · DECEMBER 4, 2027 · CHICAGO</div>
+    <div class="fan" aria-hidden="true"><svg viewBox="0 0 220 34"><use href="#fanDeco"/></svg></div>
+  </header>
+
+  <div class="heroimg rv">
+    <div class="frame"><div class="inner">
+      <img src="hero.png" alt="A champagne tower glowing against gold art-deco fans">
+    </div></div>
+  </div>
+
+  <section class="sec rv">
+    <div class="k">The Announcement</div>
+    <h2>A Toast, Ten Years in the Making</h2>
+    <p class="body">Together with their families, <em>Vivian &amp; Theodore</em> invite you to celebrate their marriage — one night of gold, velvet, and dancing in the heart of the city.</p>
+    <div class="count" id="count">
+      <div class="cell"><div class="num" id="cd-d">—</div><div class="cap">Days</div></div>
+      <div class="cell"><div class="num" id="cd-h">—</div><div class="cap">Hours</div></div>
+      <div class="cell"><div class="num" id="cd-m">—</div><div class="cap">Minutes</div></div>
+      <div class="cell"><div class="num" id="cd-s">—</div><div class="cap">Seconds</div></div>
+    </div>
+  </section>
+
+  <section class="sec rv">
+    <div class="k">The Parties</div>
+    <h2>Her &amp; Him</h2>
+    <div class="duo">
+      <div class="col">
+        <div class="nm">VIVIAN</div>
+        <div class="rl">the romantic</div>
+        <div class="tx">An architect who sketches ballrooms into old buildings. She fell first — at a gallery opening, over a disagreement about a staircase. She was right.</div>
+      </div>
+      <div class="col">
+        <div class="nm">THEODORE</div>
+        <div class="rl">the quiet one</div>
+        <div class="tx">A jazz pianist who never once played requests — until she asked. He proposed on the stage of an empty theater, one spotlight, one song, one question.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec rv">
+    <div class="k">The Programme</div>
+    <h2>The Evening, in Four Movements</h2>
+    <div class="prog">
+      <div class="row"><div class="t">7:00 PM</div><div class="w">The ceremony, beneath the marble vault</div></div>
+      <div class="row"><div class="t">8:00 PM</div><div class="w">Champagne &amp; cocktails, gold hour</div></div>
+      <div class="row"><div class="t">9:00 PM</div><div class="w">Dinner, toasts &amp; the first dance</div></div>
+      <div class="row"><div class="t">11:00 PM</div><div class="w">The band plays until late</div></div>
+    </div>
+    <p class="quiet" style="margin-top:1.3rem">Black tie. Feathers optional, enthusiasm mandatory.</p>
+  </section>
+
+  <section class="sec rv">
+    <div class="k">Kindly Reply</div>
+    <h2>Wire Your Answer</h2>
+    <div class="telegram">
+      <div class="tline"><b>TO:</b> VIVIAN &amp; THEODORE — WINTER WEDDING</div>
+      <div class="tline"><b>RE:</b> ATTENDANCE — DECEMBER 4, 2027</div>
+      <div class="tb">
+        <button class="tbtn" id="rsvpYes" type="button">ACCEPT WITH PLEASURE</button>
+        <button class="tbtn" id="rsvpNo" type="button">DECLINE WITH REGRET</button>
+      </div>
+      <div class="tnote" id="rsvpNote">Your wire opens ready to send — just tap send.</div>
+    </div>
+    <div class="venue">
+      <div class="vn">The Marble Vault</div>
+      <div class="quiet">Downtown · Chicago, Illinois</div>
+      <a class="map-link" href="https://maps.google.com/?q=Downtown+Chicago+Illinois" target="_blank" rel="noopener">View on the map ↗</a>
+    </div>
+  </section>
+
+  <footer class="rv">
+    <div class="fan" aria-hidden="true"><svg viewBox="0 0 220 34" style="transform:scaleY(-1)"><use href="#fanDeco"/></svg></div>
+    <div class="mono">VIVIAN <span class="h">♥</span> THEODORE</div>
+    <div class="lines">The Marble Vault · Chicago — The Fourth of December · Two Thousand Twenty-Seven</div>
+    <div class="rc">Wedding planned by Sara · Crafted by <a href="https://alikhiq.github.io/roundcity-atelier/" target="_blank" rel="noopener">Round City Atelier</a></div>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+"use strict";
+var GUESTS = {
+  "1001":{en:"Mr. & Mrs. Fitzgerald"},
+  "1002":{en:"The Gable Family"},
+  "1003":{en:"Ms. Billie Hart"},
+  "1004":{en:"Mr. Duke Ellery & Ms. Ada Wren"},
+  "1005":{en:"The Sinclair Family"},
+  "1006":{en:"Mr. Miles Corbin"},
+  "1007":{en:"Dr. & Mrs. Langston"},
+  "1008":{en:"Ms. Pearl Avalon"},
+  "1009":{en:"Mr. & Mrs. Remington"},
+  "1010":{en:"Ms. Josephine Vale"},
+  "1011":{en:"The Calloway Family"},
+  "1012":{en:"Mr. Dexter Crane"},
+  "1013":{en:"Ms. Mabel Rose"},
+  "1014":{en:"Mr. & Mrs. Wexler"},
+  "1015":{en:"Ms. Etta Jameson"},
+  "1016":{en:"The Harlow Family"},
+  "7777":{en:"Sara", nick:"Our Wedding Planner", hearts:true}
+};
+var RSVP_TO = 'ali@roundcity.co';
+var gate=document.getElementById('gate'),input=document.getElementById('pinInput'),hint=document.getElementById('pinHint');
+
+function paramPin(){try{var m=(location.search||'').match(/[?&](?:p|pin)=(\d{3,6})/);var p=m?m[1]:null;return (p&&GUESTS[p])?p:null;}catch(e){return null;}}
+function admit(pin){
+  var g=GUESTS[pin];
+  if(!g){hint.textContent='the door stays closed — try again';hint.classList.remove('err');void hint.offsetWidth;hint.classList.add('err');input.value='';input.focus();return;}
+  try{sessionStorage.setItem('velvetPin',pin);}catch(e){}
+  var el=document.getElementById('guestGreet');
+  el.textContent = g.hearts ? ('♥ the guest of honor — '+g.en+(g.nick?', '+g.nick:'')+' ♥') : ('welcoming '+g.en);
+  gate.classList.add('gone');
+  document.body.classList.remove('locked');
+  setTimeout(function(){gate.style.display='none';},1300);
+}
+document.getElementById('pinForm').addEventListener('submit',function(e){e.preventDefault();admit((input.value||'').trim());});
+var pp=paramPin();
+if(pp){setTimeout(function(){admit(pp);},400);}
+else{var st=null;try{st=sessionStorage.getItem('velvetPin');}catch(e){} if(st&&GUESTS[st])admit(st);else setTimeout(function(){input.focus();},600);}
+
+/* countdown — Dec 4 2027, 7:00 PM CST = Dec 5, 01:00 UTC */
+var target=Date.UTC(2027,11,5,1,0,0);
+var D=document.getElementById('cd-d'),H=document.getElementById('cd-h'),M=document.getElementById('cd-m'),S=document.getElementById('cd-s');
+function pad(n){return n<10?'0'+n:''+n;}
+function tick(){var ms=Math.max(0,target-Date.now());var s=Math.floor(ms/1000);
+  D.textContent=Math.floor(s/86400);H.textContent=pad(Math.floor(s/3600)%24);M.textContent=pad(Math.floor(s/60)%60);S.textContent=pad(s%60);}
+tick();setInterval(tick,1000);
+
+/* rsvp */
+function curPin(){try{return sessionStorage.getItem('velvetPin');}catch(e){return null;}}
+function rsvpMail(kind){
+  var pin=curPin()||paramPin();
+  var who=(pin&&GUESTS[pin])?GUESTS[pin].en+' (code '+pin+')':'Guest (please add your name)';
+  var subj=(kind==='yes'?'RSVP — Accept with pleasure ✔ — ':'RSVP — Decline with regret — ')+who;
+  var body='Vivian & Theodore — December 4, 2027\n\n'+who+'\n\n'+(kind==='yes'?'WE ACCEPT WITH PLEASURE\n\nNumber attending: ':'We decline with regret.\n\nWith love and best wishes.');
+  return 'mailto:'+RSVP_TO+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+}
+var y=document.getElementById('rsvpYes'),n=document.getElementById('rsvpNo');
+function go(kind){
+  y.classList.toggle('picked',kind==='yes');n.classList.toggle('picked',kind==='no');
+  try{localStorage.setItem('velvetRsvp',kind);}catch(e){}
+  document.getElementById('rsvpNote').textContent=kind==='yes'?'Your wire is open — tap send to confirm.':'Your wire is open — tap send. We will miss you.';
+  window.location.href=rsvpMail(kind);
+}
+y.addEventListener('click',function(){go('yes');});
+n.addEventListener('click',function(){go('no');});
+try{var pv=localStorage.getItem('velvetRsvp');if(pv){y.classList.toggle('picked',pv==='yes');n.classList.toggle('picked',pv==='no');}}catch(e){}
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(n){io.observe(n);});
+setTimeout(function(){document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in');});},3500);
+})();
+</script>
+</body>
+</html>
